@@ -22,7 +22,7 @@ contract TestCoinflip is BaseTest{
     function testRunLevel() public{
         runLevel();
     }
-    function setUpLevel() internal {
+   function setupLevel() internal override{
         levelAddress = payable(this.createLevelInstance(true));
         level = CoinFlip(levelAddress);
                 
@@ -40,7 +40,7 @@ contract TestCoinflip is BaseTest{
             uint256 coinflip = blockValue.div(FACTOR);
             level.flip(coinflip == 1 ? true:false);
 
-            utilities.mineBlock(1);
+            utilities.mineBlocks(1);
         }
         vm.stopPrank();
     }
