@@ -7,7 +7,7 @@ import "../src/levels/VaultFactory.sol";
 import "./utils/BaseTest.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
-contract TestCoinflip is BaseTest{
+contract TestVault is BaseTest{
     using SafeMath for uint256;
     Vault level;
 
