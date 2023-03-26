@@ -7,7 +7,7 @@ import "../src/levels/PrivacyFactory.sol";
 import "./utils/BaseTest.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
-contract TestCoinflip is BaseTest{
+contract TestPrivacy is BaseTest{
     using SafeMath for uint256;
     Privacy level;
 
@@ -32,9 +32,10 @@ contract TestCoinflip is BaseTest{
 
     function exploitLevel() internal override{
         vm.startPrank(player);
+        console.log(player);
         bytes32 key = vm.load(address(level),bytes32(uint256(5)));
         level.unlock(bytes16(key));
-        assertEq(level.locked(),true);
+        assertEq(level.locked(),false);
         vm.stopPrank();
     }
 }
